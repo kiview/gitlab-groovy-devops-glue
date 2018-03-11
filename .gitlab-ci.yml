@@ -1,0 +1,23 @@
+# This file is a template, and might need editing before it works on your project.
+# Full project: https://gitlab.com/pages/plain-html
+
+fetch:
+  stage: build
+  image: groovy:2.5.0-beta-3-jdk8
+  script:
+    - groovy github_watcher.groovy
+  artifacts:
+    paths:
+      - index.html
+
+pages:
+  stage: deploy
+  script:
+  - mkdir .public
+  - cp index.html .public
+  - mv .public public
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
