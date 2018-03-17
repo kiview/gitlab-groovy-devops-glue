@@ -21,6 +21,7 @@ response.items.each {
 def writer = new StringWriter()
 def builder = new MarkupBuilder(writer)
 builder.html {
+    h1("Testcontainers Github Usage report ${new Date()}")
     table {
         tr {
             th("Full name")
